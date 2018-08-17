@@ -15,7 +15,7 @@ public Rectangle(double length,double breadth)
 	this.length=length;
 	this.breadth=breadth;
 	area=length*breadth;
-	perimeter=2*(length*breadth);
+	perimeter=2*(length+breadth);
 	System.out.println("Constructor Rectangle(l,b)");
 }
 
@@ -25,7 +25,7 @@ public double getLength() {
 public void setLength(double length) {
 	this.length = length;
 	updateAreaAndPerimeter();
-	square = length == breadth;
+	isSquare();
 }
 public double getBreadth() {
 	return breadth;
@@ -33,9 +33,9 @@ public double getBreadth() {
 public void setBreadth(double breadth) {
 	this.breadth = breadth;
 	updateAreaAndPerimeter();
-	System.out.println("value of boolean sqaure:"+square);
-    square = breadth == length;
-    System.out.println("value of boolean sqaure:"+square);
+	isSquare();
+    
+    
 }
 public double getArea() {
 	return area;
@@ -49,7 +49,7 @@ private void updateAreaAndPerimeter() {
     perimeter=2*(length+breadth);
 }
 public boolean isSquare()
-{
+{   square = breadth == length;
 	return square;
 }
 }
