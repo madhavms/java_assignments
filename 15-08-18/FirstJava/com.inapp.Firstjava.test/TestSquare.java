@@ -2,11 +2,16 @@ package com.inapp.Firstjava.test;
 import com.inapp.Firstjava.learn.*;
 public class TestSquare{
 	public static void main(String[] args) {
-		Square obj=new Square(6);
-		System.out.println("Length of square:"+obj.getLength());
-		System.out.println("Breadth of square:"+obj.getBreadth());
-		System.out.println("Area of square:"+obj.getArea());
-		System.out.println("Perimeter of square:"+obj.getPerimeter());
+		int arrayLength=5;
+		Square squareArr[]=new Square[arrayLength];
+		for(int i=0;i<arrayLength;i++) {
+	    Square square=new Square(i+1);
+	    squareArr[i]=square;
+	    }
+		for(int i=0;i<arrayLength;i++) {
+		System.out.println(squareArr[i].getArea());
+		
 	}
-
+	}
 }
+
