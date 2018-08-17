@@ -11,11 +11,15 @@ public Rectangle()
 {System.out.println("Constructor Rectangle()");
 	}
 public Rectangle(double length,double breadth)
-{
+{   int i=0;
 	this.length=length;
 	this.breadth=breadth;
 	area=length*breadth;
-	perimeter=2*(length+breadth);
+//	perimeter=2*(length+breadth);
+/*	while(i<2) {
+		perimeter=length+breadth;
+		i++;
+	}*/
 	System.out.println("Constructor Rectangle(l,b)");
 }
 
