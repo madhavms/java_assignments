@@ -20,6 +20,12 @@ public Rectangle(double length,double breadth)
 		perimeter=length+breadth;
 		i++;
 	}*/
+	/*do
+	{
+		perimeter=length+breadth;
+		i++;
+	}
+	while(i<2);*/
 	System.out.println("Constructor Rectangle(l,b)");
 }
 
