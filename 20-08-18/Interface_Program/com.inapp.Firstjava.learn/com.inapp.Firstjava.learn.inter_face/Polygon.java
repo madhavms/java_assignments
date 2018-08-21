@@ -1,6 +1,6 @@
 package com.inapp.Firstjava.learn.inter_face;
 
-public abstract class Polygon implements PolygonAreaCalculatorService,PolygonPerimeterCalculatorService{
+public abstract class Polygon implements PolygonCalculatorService{
 private double[] sides;
 private int noofsides;
 	@Override
@@ -8,7 +8,9 @@ private int noofsides;
 		double perimeter = 0;
 		if(sides != null && sides.length >0){
 			for (int i = 0; i < sides.length; i++) {
+				
 				perimeter = perimeter + sides[i];
+				
 			}
 		}
 		return perimeter;
