@@ -25,6 +25,7 @@ public void hashMap() {
 	map.put('I',"INK");
 	map.put('J',"JUG");
 	System.out.println("\nElements of map before removal: "+map+"\n");
+	System.out.println("Hash before removal: "+map.hashCode());
         
 }
 public void getValue() {
@@ -38,5 +39,7 @@ public void removeValue() {
 	Character key = 'B';
 	map.remove(key);
 	System.out.println("Elements of map after removal: "+map+"\n");
+	System.out.println("Hash after removal: "+map.hashCode());
 }
+
 }
