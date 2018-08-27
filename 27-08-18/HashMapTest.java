@@ -22,7 +22,7 @@ public void hashMap() {
 	map.put('I',"INK");
 	map.put('J',"JUG");
 	System.out.println("Elements of the Map:");
-    System.out.println(map);
+        System.out.println(map);
 }
 public void getValue() {
 	Character key = 'B';
