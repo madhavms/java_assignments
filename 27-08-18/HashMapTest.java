@@ -8,6 +8,9 @@ public static void main(String[] args) {
 	HashMapTest mapTest = new HashMapTest();
 	mapTest.hashMap();
 	mapTest.getValue();
+	mapTest.removeValue();
+	mapTest.getValue();
+	
 }
 public void hashMap() {
 	
@@ -21,12 +24,19 @@ public void hashMap() {
 	map.put('H',"HEN");
 	map.put('I',"INK");
 	map.put('J',"JUG");
-	System.out.println("Elements of the Map:");
-        System.out.println(map);
+	System.out.println("\nElements of map before removal: "+map+"\n");
+        
 }
 public void getValue() {
 	Character key = 'B';
-	System.out.println("The value for the key"+" "+key+" "+"is:"+map.get(key));
+	if(map.containsKey(key)) 
+	System.out.println("The value for the key"+" "+key+" "+"is "+map.get(key)+"\n");
+	else
+	System.out.println("The value for the key"+" "+key+" "+"is not found \n");
+}
+public void removeValue() {
+	Character key = 'B';
+	map.remove(key);
+	System.out.println("Elements of map after removal: "+map+"\n");
 }
 }
-
