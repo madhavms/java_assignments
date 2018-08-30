@@ -7,10 +7,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class PersonTest {
-
+    Person person = new Person();
 	/**
 	 * @param args
 	 */
@@ -23,11 +25,11 @@ public class PersonTest {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String S = reader.readLine();
 		System.out.println("Input path is : "+S);
-		Person getUserByName = new Person();
+		
 		PersonTest test = new PersonTest();
 		System.out.println(test.listFileInDirectory(S));
 		test.printFileContentAsString(S);
-		ArrayList<Person> personSearchedByName = getUserByName.getPersonByName();
+		ArrayList<Person> personSearchedByName = test.getPersonByName();
 		if(null!=personSearchedByName) {
 			for(Person people:personSearchedByName)
 				System.out.println(people);
@@ -66,7 +68,7 @@ public class PersonTest {
 	}
 	
 	public void printFileContentAsString(String path){
-		Person person =new Person();
+		
 		
 		if(path != null && !"".equals(path)){
 			File file = new File(path);
@@ -83,10 +85,10 @@ public class PersonTest {
 					    
 					            
 					            String [] items = line.split(",");
-					            person.createPerson(items[0], items[1], Long.parseLong(items[2]));
+					            addPersonToList(items[0], items[1], Long.parseLong(items[2]));
 					            
 					        }
-					person.printPerson();
+					printSortedListOfPeople();
 					    
 					}
 				 catch (FileNotFoundException e) {					
@@ -104,5 +106,47 @@ public class PersonTest {
 		}
 		
 	}
+	 public ArrayList<Person> getListSortedByName(ArrayList<Person> sortedList) {         
+		    Collections.sort(sortedList,Person.nameComparator);         
+		    return sortedList;     
+		  } 
 
+	
+	 public void printSortedListOfPeople() {
+	
+		
+		Person personsobject = new Person(); 
+		//System.out.println(personsorter.getSortedPersonByName());
+		ArrayList<Person> unsortedList = personsobject.getArrayList();
+		ArrayList<Person> sortedList = getListSortedByName(unsortedList);
+		
+		Iterator<Person> personiterator = sortedList.iterator();
+		System.out.println(" \nSorted Namewise\n");
+		while (personiterator.hasNext()) {
+			Person persondetails = personiterator.next();
+			System.out.println(persondetails);
+			
+		
+		
+	}
+	 }
+		public void addPersonToList(String Name,String Email,long Telephone) {
+			
+			person.getArrayList().add(new Person(Name,Email,Telephone));
+			
+		}  
+		public ArrayList<Person> getPersonByName() throws IOException {
+			ArrayList<Person> personByName = new ArrayList<>();
+			System.out.println("\nEnter the Name: ");
+			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			String S = reader.readLine();
+			for(Person personObject:person.getArrayList()) {
+				
+				if(personObject.toString().toLowerCase().contains(S.toLowerCase())) {
+					
+					personByName.add(personObject);
+				}
+			}
+			return personByName;
+		}
 } 
