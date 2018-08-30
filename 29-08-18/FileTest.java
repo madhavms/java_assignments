@@ -1,4 +1,4 @@
-package com.inapp.firstjava.test;
+package com.inapp.Firstjava.test;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -27,10 +27,10 @@ public class FileTest {
 			e.printStackTrace();
 		}
 		FileTest test = new FileTest();
-		System.out.println(test.listFileInDirectory("D:\\java_learn\\docrepo"));
-		System.out.println(test.listFileInDirectory("D:/java_learn/docrepo"));
+		System.out.println(test.listFileInDirectory("/home/madhav/Documents/TEXT_FILES/Hello.txt"));
+		System.out.println(test.listFileInDirectory("/home/madhav/Documents/TEXT_FILES/Hello.txt"));
 		
-		System.out.println("File content is : "+test.readFileContentAsString("D:\\java_learn\\docrepo\\Hello.txt"));
+		System.out.println("File content is : "+test.readFileContentAsString("/home/madhav/Documents/TEXT_FILES/Hello.txt"));
 	}
 	
 	public List<String> listFileInDirectory(String directoryPath){
@@ -75,6 +75,17 @@ public class FileTest {
 					//fileInputStream = new FileInputStream(file);
 					BufferedReader reader = new BufferedReader(new FileReader(file));
 					fileContent = reader.readLine();
+					String line = null;
+					while ((line = reader.readLine()) != null) 
+					{
+					    for (int i = 0; i < line.length(); i++) 
+					    {
+					        if (Character.isLetter(line.charAt(i))) 
+					        {
+					            System.out.print(line.charAt(i));
+					        }
+					    }
+					}
 				} catch (FileNotFoundException e) {					
 					e.printStackTrace();
 				} catch (IOException e) {					
@@ -91,4 +102,4 @@ public class FileTest {
 		return fileContent;
 	}
 
-}
+} //https://stackoverflow.com/questions/28705491/reading-file-line-by-line-terminating-while-loop-after-reaching-last-line
