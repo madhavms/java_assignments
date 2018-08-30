@@ -26,13 +26,13 @@ public class Person {
 		
 	}    
 	public void getPersonByName() throws IOException {
-		System.out.println("Enter the Name: ");
+		System.out.println("\nEnter the Name: ");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String S = reader.readLine();
 		boolean x = false;
 		for(Person name:arrayList) {
 			
-			if(name.getName().toLowerCase().equals(S.toLowerCase())) {
+			if(name.toString().toLowerCase().contains(S.toLowerCase())) {
 				System.out.println(name);
 				x = true;
 			}
@@ -105,7 +105,7 @@ public Person(ArrayList<Person> person) {
 	  }; 
 	  @Override     
 	  public String toString() {         
-	    return "Name: " + this.Name + ", Email: " + this.Email + ", Telephone:" + this.telephone;     
+	    return this.Name + ", " + this.Email + ", " + this.telephone;     
 	  }
 
 }
