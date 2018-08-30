@@ -16,21 +16,22 @@ public class PersonTest {
 	 */
 	/**
 	 * @param args
+	 * @throws IOException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		System.out.println("Enter path : ");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		try {
-			System.out.println("Input path is : "+reader.readLine());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		String S = reader.readLine();
+		System.out.println("Input path is : "+S);
+		Person getUserByName = new Person();
+		
 		PersonTest test = new PersonTest();
-		System.out.println(test.listFileInDirectory("/home/madhav/Music/src/com/inapp/firstjava/test/Hello.txt"));
+		System.out.println(test.listFileInDirectory(S));
 		
 		
-		System.out.println("File content is : "+test.readFileContentAsString("/home/madhav/Music/src/com/inapp/firstjava/test/Hello.txt"));
+		
+		test.printFileContentAsString(S);
+		getUserByName.getPersonByName();
 	}
 	
 	public List<String> listFileInDirectory(String directoryPath){
@@ -50,7 +51,7 @@ public class PersonTest {
 						System.out.println("The given directory is Empty.");
 					}
 				} else {
-					System.out.println("Given path is no a directory : "+directoryPath);
+					System.out.println("Given path is not a directory : "+directoryPath);
 				}
 				
 			} else {
@@ -64,15 +65,15 @@ public class PersonTest {
 		return fileNames;
 	}
 	
-	public String readFileContentAsString(String path){
-		PersonCreator person =new PersonCreator();
-		String fileContent = "";
+	public void printFileContentAsString(String path){
+		Person person =new Person();
+		
 		if(path != null && !"".equals(path)){
 			File file = new File(path);
 			if(!file.isDirectory()){
 				//FileInputStream fileInputStream = null;
 				try {
-					System.out.println("In try");
+					
 					//fileInputStream = new FileInputStream(file);
 					BufferedReader reader = new BufferedReader(new FileReader(file));
 					
@@ -80,7 +81,7 @@ public class PersonTest {
 					while ((line = reader.readLine()) != null) 
 					{
 					    
-					            System.out.println(line);
+					            
 					            String [] items = line.split(",");
 					            person.createPerson(items[0], items[1], Long.parseLong(items[2]));
 					            
@@ -93,7 +94,7 @@ public class PersonTest {
 				} catch (IOException e) {					
 					e.printStackTrace();
 				} finally{
-					System.out.println("In finally");
+					
 				}
 			} else {
 				System.out.println("The given path points to a directory");
@@ -101,7 +102,7 @@ public class PersonTest {
 		} else {
 			System.out.println("Filename is invalid");
 		}
-		return fileContent;
+		
 	}
 
 } 
