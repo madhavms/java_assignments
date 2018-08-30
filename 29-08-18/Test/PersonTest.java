@@ -24,14 +24,14 @@ public class PersonTest {
 		String S = reader.readLine();
 		System.out.println("Input path is : "+S);
 		Person getUserByName = new Person();
-		
 		PersonTest test = new PersonTest();
 		System.out.println(test.listFileInDirectory(S));
-		
-		
-		
 		test.printFileContentAsString(S);
-		getUserByName.getPersonByName();
+		ArrayList<Person> personSearchedByName = getUserByName.getPersonByName();
+		if(null!=personSearchedByName) {
+			for(Person people:personSearchedByName)
+				System.out.println(people);
+		}
 	}
 	
 	public List<String> listFileInDirectory(String directoryPath){
@@ -106,8 +106,3 @@ public class PersonTest {
 	}
 
 } 
-
-
-
-
-
