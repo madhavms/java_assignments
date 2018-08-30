@@ -10,8 +10,8 @@ import java.util.Iterator;
 
 public class Person {
 	
-	private String Name;
-	private String Email;
+	private String name;
+	private String email;
 	private long telephone;
 	static ArrayList<Person> arrayList = new ArrayList<Person>();
 	ArrayList<Person> person = new ArrayList<>();
@@ -20,26 +20,24 @@ public class Person {
 		
 	}
 	
-	public static void createPerson(String Name,String Email,long Telephone) {
+	public void createPerson(String Name,String Email,long Telephone) {
 		
 		arrayList.add(new Person(Name,Email,Telephone));
 		
 	}    
-	public void getPersonByName() throws IOException {
+	public ArrayList<Person> getPersonByName() throws IOException {
+		ArrayList<Person> personByName = new ArrayList<>();
 		System.out.println("\nEnter the Name: ");
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String S = reader.readLine();
-		boolean x = false;
-		for(Person name:arrayList) {
+		for(Person personObject:arrayList) {
 			
-			if(name.toString().toLowerCase().contains(S.toLowerCase())) {
-				System.out.println(name);
-				x = true;
+			if(personObject.toString().toLowerCase().contains(S.toLowerCase())) {
+				
+				personByName.add(personObject);
 			}
 		}
-		if(x == false) {
-			System.out.println(S+" is not found");
-		}
+		return personByName;
 	}
 	public void printPerson() {
 	
@@ -67,34 +65,19 @@ public Person(ArrayList<Person> person) {
   } 
 	
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
-	public String getEmail() {
-		return Email;
-	}
-
-	public void setEmail(String email) {
-		Email = email;
-	}
-
-	public long getTelephone() {
-		return telephone;
-	}
-
-	public void setTelephone(long telephone) {
-		this.telephone = telephone;
-	}
 
 	
 
 	public Person(String Name,String Email,long telephone) {
-		this.Name = Name;
-		this.Email = Email;
+		this.name = Name;
+		this.email = Email;
 		this.telephone = telephone;
 	}
 	public static Comparator<Person> nameComparator = new Comparator<Person>() {         
@@ -105,7 +88,7 @@ public Person(ArrayList<Person> person) {
 	  }; 
 	  @Override     
 	  public String toString() {         
-	    return this.Name + ", " + this.Email + ", " + this.telephone;     
+	    return this.name + ", " + this.email + ", " + this.telephone;     
 	  }
 
 }
